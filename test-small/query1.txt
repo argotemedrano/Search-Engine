@@ -1,0 +1,11 @@
+PRINT test-small/page1.md
+PRINT test-small/page3.md
+INCOMING test-small/page1.md
+OUTGOING test-small/page1.md
+INCOMING test-small/page2.txt
+OUTGOING test-small/page2.txt
+INCOMING test-small/page3.md
+OUTGOING test-small/page3.md
+INCOMING test-small/page4.txt
+OUTGOING test-small/page4.txt
+QUIT

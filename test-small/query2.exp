@@ -1,0 +1,53 @@
+=====================================
+Menu: 
+  AND term term ...                  
+  OR term term ...                   
+  DIFF term not-present-term not-present-term ... 
+  PRINT page                         
+  INCOMING page                      
+  OUTGOING page                      
+  QUIT                               
+=====================================
+
+$: 
+2
+test-small/page1.md
+test-small/page2.txt
+
+$: 
+0
+
+$: 
+1
+test-small/page1.md
+
+$: 
+0
+
+$: 
+1
+test-small/page4.txt
+
+$: 
+0
+
+$: 
+3
+test-small/page4.txt
+test-small/page2.txt
+test-small/page3.md
+
+$: 
+2
+test-small/page1.md
+test-small/page3.md
+
+$: 
+1
+test-small/page2.txt
+
+$: 
+1
+test-small/page1.md
+
+$: 

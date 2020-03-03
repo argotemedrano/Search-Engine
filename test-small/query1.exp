@@ -1,0 +1,51 @@
+=====================================
+Menu: 
+  AND term term ...                  
+  OR term term ...                   
+  DIFF term not-present-term not-present-term ... 
+  PRINT page                         
+  INCOMING page                      
+  OUTGOING page                      
+  QUIT                               
+=====================================
+
+$: 
+Tommy; U$SC Sandra [one] [other] 
+
+Another line of text.
+$: 
+Page#one;two tHRee four five (sanDra) [hi][np] [bad link] (not-a-link)
+
+$: 
+2
+test-small/page1.md
+test-small/page3.md
+
+$: 
+2
+test-small/page1.md
+test-small/page4.txt
+
+$: 
+0
+
+$: 
+0
+
+$: 
+0
+
+$: 
+2
+test-small/page1.md
+test-small/page4.txt
+
+$: 
+2
+test-small/page1.md
+test-small/page3.md
+
+$: 
+0
+
+$: 
