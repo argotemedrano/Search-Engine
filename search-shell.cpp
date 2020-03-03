@@ -15,19 +15,20 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    // Declare the search engine
     SearchEng seng(new TXTParser);
+    seng.register_parser("md", new MDParser);
+    seng.register_parser("txt", new TXTParser);
 
-    // ---------------------- [TO BE COMPLETED] -------------------------------
-    // Create and register appropriate parsers for .md and .txt files
+    SearchUI ui(&seng);
 
-
-    // Create the SearchUI object
-
-
-    // Create and add appropriate Command Handlers to the SearchUI
-
-
+    // Available Commands
+    ui.add_handler(new QuitHandler());
+    ui.add_handler(new PrintHandler());
+    ui.add_handler(new AndHandler());
+    ui.add_handler(new OrHandler());
+    ui.add_handler(new DiffHandler());
+    ui.add_handler(new IncomingHandler());
+    ui.add_handler(new OutgoingHandler());
 
     // ------------------------------------------------------------------------
 
@@ -54,8 +55,5 @@ int main(int argc, char* argv[])
         ofstream out_file(argv[3]);
         result = ui.run(in_file, out_file);
     }
-    // You may add cleanup code here though you likely do not
-    // need to.
-
     return result;
 }

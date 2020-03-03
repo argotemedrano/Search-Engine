@@ -74,7 +74,7 @@ protected:
      */
 
     virtual bool canHandle(const std::string& cmd) const = 0;
-
+ 
     /**
      * Processes the command
      *
@@ -84,7 +84,7 @@ protected:
      *   Input stream to read additional command arguments, if needed
      * @param [inout] ostr
      *   Output stream to output results of the command, if needed
-     */
+     */ 
     virtual HANDLER_STATUS_T process(SearchEng* eng, std::istream& instr, std::ostream& ostr)  = 0;
 
 private:

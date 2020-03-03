@@ -15,7 +15,7 @@ Handler::~Handler()
 {
     if(next_) {
         delete next_;
-    }
+    } 
 }
 
 void Handler::set_next(Handler* next)
@@ -36,7 +36,7 @@ Handler::HANDLER_STATUS_T Handler::handle(SearchEng* eng, const std::string& cmd
     // This was the last handler, so no one was able to process this command
     else {
         cout << "Unrecognized command" << endl;
-        return HANDLER_ERROR; // Error
+        return HANDLER_ERROR; // Error  
     }
 }
 

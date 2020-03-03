@@ -7,8 +7,10 @@
 
 using namespace std;
 
+// COMPLETE
+
 WebPage::WebPage() : filename_("uninit")
-{
+{ 
 
 }
 
@@ -38,7 +40,7 @@ void WebPage::all_terms(const StringSet& terms)
     terms_ = terms;
 }
 
-StringSet WebPage::all_terms() const
+const StringSet& WebPage::all_terms() const
 {
 #ifdef DEBUG
     for(set<string>::iterator wit = terms_.begin(); wit != terms_.end(); ++wit) {
@@ -53,7 +55,7 @@ void WebPage::add_incoming_link(WebPage* wp)
     this->in_links_.insert(wp);
 }
 
-WebPageSet WebPage::incoming_links() const
+const WebPageSet& WebPage::incoming_links() const
 {
     return in_links_;
 }
@@ -61,7 +63,7 @@ void WebPage::add_outgoing_link(WebPage* wp)
 {
     out_links_.insert(wp);
 }
-WebPageSet WebPage::outgoing_links() const
+const WebPageSet& WebPage::outgoing_links() const
 {
     return out_links_;
 }

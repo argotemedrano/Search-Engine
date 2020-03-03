@@ -1,0 +1,59 @@
+=====================================
+Menu: 
+  AND term term ...                  
+  OR term term ...                   
+  DIFF term not-present-term not-present-term ... 
+  PRINT page                         
+  INCOMING page                      
+  OUTGOING page                      
+  QUIT                               
+=====================================
+
+$: 
+2
+tests/engine/page1.md
+tests/engine/page4.txt
+
+$: 
+0
+
+$: 
+2
+tests/engine/page1.md
+tests/engine/page4.txt
+
+$: 
+0
+
+$: 
+2
+tests/engine/page1.md
+tests/engine/page3.md
+
+$: 
+0
+
+$: 
+0
+
+$: 
+2
+tests/engine/page1.md
+tests/engine/page3.md
+
+$: 
+Tommy; U$SC Sandra [one] [other] 
+
+Another line of text.
+$: 
+test page tOMMy
+
+$: 
+Page#one;two tHRee four five (sanDra) [hi][np] [bad link] (not-a-link)
+
+$: 
+test program one four
+two line file
+Computer-Science# 104 is really,really5times,really#great?I don't_know!
+
+$: 

@@ -19,6 +19,7 @@ public:
      * Default constructor
      */
     WebPage();
+    
     /**
      * Initializing constructor
      */
@@ -47,7 +48,7 @@ public:
     /**
      * Returns all the unique, tokenized words in this webpage
      */
-    StringSet all_terms() const;
+    const StringSet& all_terms() const;
 
     /**
      * Adds a webpage that links to this page
@@ -57,7 +58,7 @@ public:
     /**
      * Returns all webpages that link to this page
      */
-    WebPageSet incoming_links() const;
+    const WebPageSet& incoming_links() const;
 
     /**
      * Adds a webpage that this page links to
@@ -67,7 +68,7 @@ public:
     /**
      * Returns all webpages this page links to
      */
-    WebPageSet outgoing_links() const;
+    const WebPageSet& outgoing_links() const;
 
 
 

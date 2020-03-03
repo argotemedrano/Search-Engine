@@ -18,10 +18,6 @@ protected:
     virtual HANDLER_STATUS_T process(SearchEng* eng, std::istream& instr, std::ostream& ostr);
 };
 
-/*********** OTHER CLASSES WILL NEED TO BE COMPLETED IN cmdhandler.cpp *******/
-/***********  You will also need to declare the classes for handling   *******/
-/***********          the AND, OR, and DIFF command handlers           *******/
-
 /**
  * Handles the PRINT command
  */
@@ -67,8 +63,43 @@ protected:
     virtual HANDLER_STATUS_T process(SearchEng* eng, std::istream& instr, std::ostream& ostr);
 };
 
-/****************************************************************************/
-/* Declare the handler classes for AND, OR, and DIFF here                   */
-/****************************************************************************/
+/**
+ * Handles the AND command
+ */
+class AndHandler : public Handler {
+    public:
+    AndHandler();
+    AndHandler(Handler* next);
+
+    protected:
+    virtual bool canHandle(const std::string& cmd) const;
+    virtual HANDLER_STATUS_T process(SearchEng* eng, std::istream& instr, std::ostream& ostr);
+};
+
+/**
+ * Handles the OR command
+ */
+class OrHandler : public Handler {
+    public:
+    OrHandler();
+    OrHandler(Handler* next);
+
+    protected:
+    virtual bool canHandle(const std::string& cmd) const;
+    virtual HANDLER_STATUS_T process(SearchEng* eng, std::istream& instr, std::ostream& ostr);
+};
+
+/**
+ * Handles the DIFF command
+ */
+class DiffHandler : public Handler {
+    public:
+    DiffHandler();
+    DiffHandler(Handler* next);
+    
+    protected:
+    virtual bool canHandle(const std::string& cmd) const;
+    virtual HANDLER_STATUS_T process(SearchEng* eng, std::istream& instr, std::ostream& ostr);
+};
 
 #endif

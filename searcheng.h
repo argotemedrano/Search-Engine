@@ -7,8 +7,6 @@
 #include "webpage.h"
 #include "pageparser.h"
 
-
-
 class WebPageSetCombiner
 {
 public:
@@ -31,12 +29,20 @@ public:
 };
 
 /*** Define Derived WebPageSetCombiners (for AND, OR, DIFF) classes below ***/
+class AndCombiner : public WebPageSetCombiner {
+public:
+    virtual WebPageSet combine(const WebPageSet& setA, const WebPageSet& setB);
+};
 
+class OrCombiner : public WebPageSetCombiner {
+public:
+    virtual WebPageSet combine(const WebPageSet& setA, const WebPageSet& setB);
+};
 
-
-
-
-
+class DiffCombiner : public WebPageSetCombiner {
+public:
+    virtual WebPageSet combine(const WebPageSet& setA, const WebPageSet& setB);
+};
 
 /**
  * Provides parsing and indexing of search terms as well as search operations.
@@ -56,13 +62,13 @@ public:
 
     /**
      * Destructor
-     * [TO BE WRITTEN]
+     * [COMPLETED]
      */
     ~SearchEng();
 
     /**
      * Register a parser for a particular file extension
-     * [TO BE WRITTEN]
+     * [COMPLETED]
      *
      * @param[in] extension
      *   File type/extension that should use this parser
@@ -79,7 +85,7 @@ public:
      * @param[in] index_file
      *   Name of the index file containing the list of files to read/parse
      *
-     * @throws std::logic_error
+     * @throw std::logic_error
      *   If the file has an extension but no parser is registered for
      *   that extension
      */
@@ -88,7 +94,7 @@ public:
 
     /**
      * Retrieves the WebPage object for a given page/file
-     * [TO BE WRITTEN]
+     * [COMPELTED]
      *
      * @param[in] page_name
      *   Name of page/file to retrieve
@@ -101,7 +107,7 @@ public:
 
     /**
      * Displays the contents of the page/file
-     * [TO BE WRITTEN]
+     * [COMPLETED]
      *
      * @param[inout] ostr
      *   Output stream to display the contnents
@@ -109,7 +115,7 @@ public:
      *   Name of page/file to display
      *
      * @throw std::invalid_argument if the page_name does not exist
-     * @throws std::logic_error
+     * @throw std::logic_error
      *   If the file has an extension but no parser is registered for
      *   that extension
      */
@@ -118,7 +124,7 @@ public:
     /**
      * Uses the given search terms and combiner to find the set of webpages
      *  that match the query
-     * [TO BE WRITTEN]
+     * [COMPLETED]
      *
      * @param[in] terms
      *   words/terms to search for
@@ -133,15 +139,28 @@ public:
 private:
     // Helper function to read/parse a single page
     void read_page(const std::string& filename);
-    // Add other private helpers and data members as needed
-    //  Consider how you will store
-    //    - the webpages that match a particular search term
-    //    - the parsers for particular extensions as well as
-    //       the parser for files without an extension
-    //    - Webpage objects and ability to look them up via
-    //       their page/filename
-    
 
+    // Parsers
+    PageParser* noExtensionParser_;
+    std::map<std::string, PageParser*> extensionParsers_;
+
+    // Search items linking web pages
+    // Function: Associates a search term with web pages
+    // Usage: To answer queries
+    // key[std::string]: search term
+    // value[WebPage*]: WebPages that contain that term
+    std::map<std::string, WebPageSet> search_terms_;
+    
+    // Webpages
+    // Contains all webpages
+    // key[std::string]: file name
+    // value[WebPage*]: WebPage object corresponding to that file
+    std::map<std::string, WebPage*> webPages_;
+    // Shows if a webpage has been parsed
+    // Usage: When parsing
+    // key[std::string]: filename
+    // value[bool]: If Webpage object created, parsed status
+    std::map<std::string, bool> page_parsed_;
 
 };
 

@@ -58,7 +58,7 @@ bool SearchUI::run(std::istream& istr, std::ostream& ostr)
             string cmd;
             if ((ss >> cmd)) {
                 // convert to upper case
-                conv_to_upper(cmd);
+                cmd = conv_to_upper(cmd);
                 // Invoke the chain of responsibility
                 status = handlers_->handle(eng_, cmd, ss, ostr);
                 if (status == Handler::HANDLER_ERROR)

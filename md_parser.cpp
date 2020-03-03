@@ -38,33 +38,106 @@ void MDParser::parse(std::string filename, std::set<std::string>& allSearchableT
         // Logic for parsing a normal term.
         if(state == NORMALTEXT)
         {
-            // ADD YOUR CODE HERE
+            // NOT ALPHANUMERIC:
+            // Add term to results, clear term to "" 
+            // Change state if necessary
+            if (!isalnum(c)) {
+                // There is some term to add
+                if (0 != term.size()) {
+                    term = conv_to_lower(term);
+                    allSearchableTerms.insert(term);
+                    term = "";
+                }
 
-
+                // Change state: LINKTEXT
+                if (c == '[') {
+                    state = LINKTEXT;
+                }
+            }
+            // ALPHANUMERIC: Append c to term
+            else {
+                term += c;
+            }
         }
         // Logic for parsing a link.
         else if (state == LINKTEXT)
         {
-            // ADD YOUR CODE HERE
+            // NOT ALPHANUMERIC:
+            // Add term to results, clear term to ""
+            // Change state if necessary
+            if (!isalnum(c)) {
+                // There is some term to add
+                if (0 != term.size()) {
+                    term = conv_to_lower(term);
+                    allSearchableTerms.insert(term);
+                    term = "";
+                }
 
-
-
+                // Change state: ISLINK
+                if (c == ']') {
+                    state = ISLINK;
+                }
+            } 
+            // ALPHANUMERIC: Append c to term
+            else {
+                term += c;
+            }
         }
-        else if( state == ISLINK )
+        else if(state == ISLINK)
         {
-            // ADD YOUR CODE HERE
+            /*// Change state: LINKURL or NORMALTEXT
+            if (c == '(') {
+                link = "";
+                state = LINKURL;
+            } else {
+                state = NORMALTEXT;
+                if (isalnum(c)) {
+                    term += c;
+                } else {
+                    link = "";
+                }
+            } */
 
+            // NOT ALPHANUMERIC: Clear link
+            if (!isalnum(c)) {
+                // Clear link
+                link = "";
 
-
-
+                // Change state: LINKURL
+                if (c == '(') {
+                    state = LINKURL;
+                }
+                // Change state: NORMALTEXT
+                else {
+                    state = NORMALTEXT;
+                }
+            }
+            // ALPHANUMERIC: Append c to term
+            // Change state: NORMALTEXT
+            else {
+                // Append c to term
+                term += c;
+                state = NORMALTEXT;
+            }
         }
         // Else we are in the LINKURL state.
         else
         {
-            // ADD YOUR CODE HERE
+            // Append c to link
+            if (c != ')') {
+                link += c;
+            }
+            // Add link to results
+            else {
+                // There is a link to add
+                if (0 != link.size()) {
+                    allOutgoingLinks.insert(link);
+                    link = "";
+                }
 
-
-
+                // Change state
+                state = NORMALTEXT;
+            }
         }
         // Attempt to get another character from the file.
         c = wfile.get();

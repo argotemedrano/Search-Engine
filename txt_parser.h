@@ -18,10 +18,6 @@ public:
      * See documentation in PageParser class
      */
     std::string display_text(std::string filename);
-
-private:
-    // You may add additional private helpers or data members below
-
 };
 
 #endif

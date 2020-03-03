@@ -47,7 +47,6 @@ $:
 test-small/page2.txt
 
 $: 
-1
-test-small/page1.md
+0
 
 $: 

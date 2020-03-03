@@ -1,0 +1,28 @@
+=====================================
+Menu: 
+  AND term term ...                  
+  OR term term ...                   
+  DIFF term not-present-term not-present-term ... 
+  PRINT page                         
+  INCOMING page                      
+  OUTGOING page                      
+  QUIT                               
+=====================================
+
+$: 
+2
+tests/engine/page1.md
+tests/engine/page4.txt
+
+$: 
+0
+
+$: 
+2
+tests/engine/page1.md
+tests/engine/page4.txt
+
+$: 
+0
+
+$: 

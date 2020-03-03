@@ -1,0 +1,13 @@
+outgoing tests/engine/page1.md
+outgoing tests/engine/page2.txt
+outgoing tests/engine/page3.md
+outgoing tests/engine/page4.txt
+incoming tests/engine/page1.md
+incoming tests/engine/page2.txt
+incoming tests/engine/page3.md
+incoming tests/engine/page4.txt
+print tests/engine/page1.md
+print tests/engine/page2.txt
+print tests/engine/page3.md
+print tests/engine/page4.txt
+quit
